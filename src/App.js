@@ -61,19 +61,11 @@ class App extends React.Component {
     render() {
         return (
             <Container className="App">
-                {this.state.password === process.env.REACT_APP_PASSWORD ? <div>
-                    <h1>Coinmoi post</h1>
                     <Input name="link" type="string" value={this.state.link} onChange={(e) => this.handleChange(e)} placeholder="input link here"/>
                     {this.state.posts.map((e,index) => <Card>
                         <CardText>{index+1}. {e.message.caption ? e.message.caption : e.message.text}</CardText>
                         {e.message.caption ? <Button onClick={() => this.send(index)}>Send</Button>: ''}
                     </Card>)}
-
-                    </div>: <div>
-                    <Input name="password" type="string" value={this.state.password} onChange={(e) => this.handleChange(e)} placeholder="password"/>
-                </div>
-                }
-
             </Container>
         );
     }
